@@ -39,8 +39,8 @@ jobs:
     strategy:
       matrix:
         # When bumping, note to revise env.TEST_WITH_COVERAGE below
-        python-version: [ 3.7, 3.8, 3.9, "pypy-3.7" ]
-        scikit-version: [ "0.*", "1.*" ]
+        python-version: [ 3.7, 3.8, 3.9, 3.10, 3.11, "pypy-3.7" ]
+        scikit-version: [ "1.*" ]
     env:
       TEST_WITH_COVERAGE: ${{ matrix.python-version == '3.9' && matrix.scikit-version == '1.*' }}
     steps:
