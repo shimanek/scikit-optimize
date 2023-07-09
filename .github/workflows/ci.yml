@@ -35,7 +35,7 @@ jobs:
 
   test:
     name: Test
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         # When bumping, note to revise env.TEST_WITH_COVERAGE below
