@@ -16,7 +16,7 @@ jobs:
         python-version: [ 3.9 ]
     steps:
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - uses: actions/cache@v2
@@ -25,7 +25,7 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-py${{ matrix.python-version }}
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 3
       - name: Install dependencies
@@ -41,8 +41,10 @@ jobs:
         # When bumping, note to revise env.TEST_WITH_COVERAGE below
         python-version: [ "3.11"]
         scikit-version: [ "0.22.0" ]
+
     env:
-      TEST_WITH_COVERAGE: ${{ matrix.python-version == '3.9' && matrix.scikit-version == '1.*' }}
+      TEST_WITH_COVERAGE: ${{ matrix.python-version == '3.11' && matrix.scikit-version == '0.22.0' }}
+
     steps:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
@@ -72,7 +74,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel twine
-          pip install scikit-learn==${{ matrix.scikit-version }}
+          pip install numpy scipy scikit-learn==${{ matrix.scikit-version }}
           pip install .[dev,plots]
           python -c 'import skopt; skopt.show_versions()'
 
