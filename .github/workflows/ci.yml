@@ -74,8 +74,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel twine
-          pip install numpy scipy scikit-learn==${{ matrix.scikit-version }}
-          pip install .[dev,plots]
+          python ./setup.py
           python -c 'import skopt; skopt.show_versions()'
 
       - name: Python sdist
