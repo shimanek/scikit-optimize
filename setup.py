@@ -26,7 +26,7 @@ if __name__ == '__main__':
             'pyaml>=16.9',
             'numpy>=1.13.3',
             'scipy>=0.19.1',
-            'scikit-learn=0.24.2',
+            'scikit-learn==0.24.2',
             'importlib-metadata; python_version < "3.8"'
         ],
         extras_require={
