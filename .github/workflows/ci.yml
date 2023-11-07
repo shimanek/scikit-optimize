@@ -72,7 +72,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel twine
-          pip install numpy cython scikit-learn==${{ matrix.scikit-version }}
+          pip install numpy==1.19.0 cython scikit-learn==${{ matrix.scikit-version }}
           pip install .[dev,plots]
           python -c 'import skopt; skopt.show_versions()'
 
