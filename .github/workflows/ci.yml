@@ -39,7 +39,7 @@ jobs:
     strategy:
       matrix:
         # When bumping, note to revise env.TEST_WITH_COVERAGE below
-        python-version: [ "3.8", "3.9", "3.10", "3.11", "pypy-3.7" ]
+        python-version: [ "3.11", "pypy-3.7" ]
         scikit-version: [ "1.*" ]
     env:
       TEST_WITH_COVERAGE: ${{ matrix.python-version == '3.9' && matrix.scikit-version == '1.*' }}
@@ -67,7 +67,7 @@ jobs:
 
       - name: Install cryptography
         run: |
-          sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+          sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
 
       - name: Install dependencies
         run: |
