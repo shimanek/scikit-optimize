@@ -72,8 +72,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel twine
-          pip install numpy cython  # scikit-learn build deps if wheel missing
-          pip install scikit-learn==${{ matrix.scikit-version }}
+          pip install numpy cython scikit-learn==${{ matrix.scikit-version }}
           pip install .[dev,plots]
           python -c 'import skopt; skopt.show_versions()'
 
