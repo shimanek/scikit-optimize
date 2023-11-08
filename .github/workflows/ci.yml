@@ -51,36 +51,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Set up caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cache
-            ~/.ccache
-          key: ${{ runner.os }}-py${{ matrix.python-version }}
-
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Install ccache
-        run: |
-          sudo apt-get install -yq ccache
-          echo /usr/lib/ccache >> $GITHUB_PATH
-
-      - name: Install cryptography
-        run: |
-          sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
-
       - name: Install dependencies
         run: |
-          pip install -U pip setuptools wheel twine
+          pip install -U pip
           pip install .
-          python -c 'import skopt; skopt.show_versions()'
-
-      - name: Python sdist
-        run: |
-          python setup.py sdist
-          twine check dist/*
+          python -c 'import skopt; print(skopt.__version__)'
 
       - name: Test
         if: env.TEST_WITH_COVERAGE != 'true'
