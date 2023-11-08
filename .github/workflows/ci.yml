@@ -74,7 +74,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel twine
-          pip install -e .
+          make in
           python -c 'import skopt; skopt.show_versions()'
 
       - name: Python sdist
