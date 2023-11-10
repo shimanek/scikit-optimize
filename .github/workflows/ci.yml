@@ -57,6 +57,7 @@ jobs:
           pip install -U pip wheel
           pip install .
           pip install .[dev]
+          pip install .[plots]
           python -c 'import skopt; print(skopt.__version__)'
 
       - name: Test
