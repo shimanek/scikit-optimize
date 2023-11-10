@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip wheel
-          python setup.py install
+          pip install .
           python -c 'import skopt; print(skopt.__version__)'
 
       - name: Test
