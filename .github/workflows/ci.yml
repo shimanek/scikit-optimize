@@ -24,7 +24,7 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-py${{ matrix.python-version }}
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 3
       - name: Install dependencies
@@ -56,8 +56,7 @@ jobs:
         run: |
           pip install -U pip wheel
           pip install .
-          pip install .[dev]
-          pip install .[plots]
+          pip install .[dev,plots]
           python -c 'import skopt; print(skopt.__version__)'
 
       - name: Test
@@ -98,7 +97,7 @@ jobs:
           key: ${{ runner.os }}-py${{ matrix.python-version }}
 
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install latex dependencies
         run: |
@@ -111,7 +110,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel
-          pip install -e .[dev,doc,plots]
+          pip install .[dev,doc,plots]
 
       - name: Test docs
         run: |
