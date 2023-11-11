@@ -693,7 +693,7 @@ def test_dimension_name2():
     for n in notnames:
         with pytest.raises(ValueError) as exc:
             _ = Real(1, 2, name=n)
-            assert("Dimension's name must be either string or"
+            assert ("Dimension's name must be either string or"
                    "None." == exc.value.args[0])
     s = Space([Real(1, 2, name="a"),
                Integer(1, 100, name="b"),
@@ -756,7 +756,7 @@ def test_space_from_yaml():
 def test_dimension_with_invalid_names(name):
     with pytest.raises(ValueError) as exc:
         Real(1, 2, name=name)
-    assert("Dimension's name must be either string or None." ==
+    assert ("Dimension's name must be either string or None." ==
            exc.value.args[0])
 
 
