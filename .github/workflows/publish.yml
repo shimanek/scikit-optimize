@@ -9,7 +9,7 @@ jobs:
 
   package:
     needs: build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v2
@@ -23,10 +23,10 @@ jobs:
 
   docs:
     needs: build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ 3.11 ]
+        python-version: [ "3.11" ]
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v2
