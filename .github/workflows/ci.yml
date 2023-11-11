@@ -38,7 +38,7 @@ jobs:
     strategy:
       matrix:
         # When bumping, note to revise env.TEST_WITH_COVERAGE below
-        python-version: [ "3.11"]
+        python-version: [ "3.11" ]
         scikit-version: [ "0.22.0" ]
 
     env:
@@ -46,8 +46,10 @@ jobs:
 
     steps:
       - name: Set up Python ${{ matrix.python-version }}
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
         run: |
-          sudo apt-get install python${{ matrix.python-version }}
           which python3
           python3 --version
 
@@ -84,7 +86,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        python-version: [ "3.9" ]
+        python-version: [ "3.11" ]
     env:
       MPLBACKEND: "agg"
     steps:
