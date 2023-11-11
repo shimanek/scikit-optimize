@@ -24,10 +24,7 @@ from packaging.version import parse
 import sys
 import skopt  # noqa: F401
 import sphinx_gallery
-try:
-    from importlib.metadata import version, PackageNotFoundError
-except ImportError:  # Python < 3.8
-    from importlib_metadata import version, PackageNotFoundError
+from importlib.metadata import version, PackageNotFoundError
 
 sys.path.insert(0, os.path.abspath('sphinxext'))
 from github_link import make_linkcode_resolve  # noqa: E402
