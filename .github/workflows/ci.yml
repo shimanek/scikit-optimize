@@ -34,6 +34,7 @@ jobs:
 
   test:
     name: Test
+    id: test
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -80,6 +81,7 @@ jobs:
 
   docs:
     name: Docs
+    if: jobs.test.result == 'success'
     runs-on: ubuntu-latest
     strategy:
       matrix:
