@@ -52,7 +52,7 @@ dev = [
 doc = [
     "memory_profiler",
     "numpydoc",
-    "sphinx",
+    "sphinx<7",
     "sphinx-gallery>=0.6",
 ]
 
