@@ -56,7 +56,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip wheel
-          pip install scikit-learn==${{matrix.scikit-version}}
+          pip install scikit-learn==${{ matrix.scikit-version }}
           pip install .
           pip install .[dev,plots]
           python -c 'import skopt; print(skopt.__version__)'
