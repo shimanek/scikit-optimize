@@ -25,9 +25,9 @@ import sys
 import skopt  # noqa: F401
 import sphinx_gallery
 try:
-    from importlib.metadata import version
+    from importlib.metadata import version, PackageNotFoundError
 except ImportError:  # Python < 3.8
-    from importlib_metadata import version
+    from importlib_metadata import version, PackageNotFoundError
 
 sys.path.insert(0, os.path.abspath('sphinxext'))
 from github_link import make_linkcode_resolve  # noqa: E402
@@ -42,7 +42,10 @@ copyright = '2017 - 2020, scikit-optimize contributors (BSD License)'
 author = 'The scikit-optimize contributors'
 
 # The short X.Y version
-_version = version("skopt")
+try:
+    _version = version("skopt")
+except PackageNotFoundError:
+    _version = version("scikit-optimize")
 version = parse(_version).base_version
 version = ".".join(version.split(".")[:2])
 # The full version, including alpha/beta/rc tags
